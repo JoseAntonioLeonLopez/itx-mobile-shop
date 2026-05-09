@@ -1,4 +1,4 @@
-# 📱 Mobile Shop
+# 📱 Itx Mobile Shop
 
 Aplicación SPA para la compra de dispositivos móviles, desarrollada como prueba técnica frontend.
 
