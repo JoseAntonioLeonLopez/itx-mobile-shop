@@ -1,0 +1,41 @@
+.product-list {
+  padding: 2rem;
+}
+
+.product-list__toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Grid de 4 columnas adaptativo */
+.product-list__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+/* 2 columnas en tablet */
+@media (max-width: 1024px) {
+  .product-list__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 1 columna en móvil */
+@media (max-width: 600px) {
+  .product-list__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.status {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+.status.error {
+  color: #e74c3c;
+}

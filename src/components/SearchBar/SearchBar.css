@@ -1,0 +1,12 @@
+.searchbar__input {
+  padding: 0.6rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 250px;
+  outline: none;
+}
+
+.searchbar__input:focus {
+  border-color: #1a1a2e;
+}

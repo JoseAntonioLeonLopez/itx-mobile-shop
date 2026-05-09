@@ -7,7 +7,7 @@ export const getProducts = async () => {
     if (cached) return cached; // Si hay datos en cache, retornarlos
 
     // Si no hay datos en cache, hacer la petición a la API
-    const response = await fetch(`${BASE_URL}/api/products`);
+    const response = await fetch(`${BASE_URL}/api/product`);
     const data = await response.json();
 
     setCache('products', data); // Almacenar los datos en cache
@@ -20,7 +20,7 @@ export const getProductById = async (id) => {
     if (cached) return cached; // Si hay datos en cache, retornarlos
 
     // Si no hay datos en cache, hacer la petición a la API
-    const response = await fetch(`${BASE_URL}/api/products/${id}`);
+    const response = await fetch(`${BASE_URL}/api/product/${id}`);
     const data = await response.json();
 
     setCache(cachedKey, data); // Almacenar los datos en cache
