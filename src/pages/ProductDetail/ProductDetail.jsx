@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import toast from "react-hot-toast";
 import { getProductById, addToCart } from "../../services/api";
 import { useCart } from "../../hooks/useCart";
 import "./ProductDetail.css";
@@ -18,7 +19,6 @@ const ProductDetail = () => {
 
   // Estado del botón añadir
   const [adding, setAdding] = useState(false);
-  const [addedMessage, setAddedMessage] = useState("");
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -50,12 +50,9 @@ const ProductDetail = () => {
       setAdding(true);
       const result = await addToCart(id, selectedColor, selectedStorage);
       updateCartCount(result.count); // actualizamos el Header
-      setAddedMessage("¡Producto añadido al carrito!");
-
-      // Limpiamos el mensaje después de 2 segundos
-      setTimeout(() => setAddedMessage(""), 2000);
+      toast.success("¡Producto añadido al carrito!");
     } catch (err) {
-      setAddedMessage("Error al añadir el producto: " + err.message);
+      toast.error("Error al añadir el producto: " + err.message);
     } finally {
       setAdding(false);
     }
@@ -69,7 +66,8 @@ const ProductDetail = () => {
     <div className="product-detail">
       {/* Link para volver al listado */}
       <Link to="/" className="product-detail__back">
-        ← Volver al listado
+        <span className="material-symbols-rounded">arrow_back</span>
+        Volver al listado
       </Link>
 
       <div className="product-detail__content">
@@ -166,13 +164,9 @@ const ProductDetail = () => {
               onClick={handleAddToCart}
               disabled={adding}
             >
+              <span className="material-symbols-rounded">add_shopping_cart</span>
               {adding ? "Añadiendo..." : "Añadir al carrito"}
             </button>
-
-            {/* Mensaje feedback */}
-            {addedMessage && (
-              <p className="product-detail__message">{addedMessage}</p>
-            )}
           </div>
         </div>
       </div>

@@ -6,7 +6,7 @@ export const CartProvider = ({ children }) => {
   const [cartCount, setCartCount] = useState(0);
 
   const updateCartCount = (count) => {
-    setCartCount(count)
+    setCartCount(prev => prev + count)
   };
 
   return (

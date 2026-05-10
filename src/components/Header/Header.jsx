@@ -14,15 +14,19 @@ const Header = () => {
             
             {/* Logo */}
             <Link to="/" className="header__logo">
-                📱 Mobile Shop
+                <span className="material-symbols-rounded header__logo-icon">storefront</span>
+                <span>ITX <span className="header__logo-accent">Mobile Shop</span></span>
             </Link>
         
             {/* Breadcrumbs */}
             <nav className="header__breadcrumb">
-                <Link to="/">Inicio</Link>
+                <Link to="/">
+                    <span className="material-symbols-rounded" style={{ fontSize: '16px' }}>home</span>
+                    Inicio
+                </Link>
                 {isDetail && (
                 <>
-                    <span> / </span>
+                    <span className="material-symbols-rounded header__breadcrumb-sep">chevron_right</span>
                     <span>Detalle del producto</span>
                 </>
                 )}
@@ -30,7 +34,9 @@ const Header = () => {
 
             {/* Carrito */}
             <div className="header__cart">
-                🛒 <span>{cartCount}</span>
+                <span className="material-symbols-rounded">shopping_cart</span>
+                {cartCount > 0 && <span className="header__cart-badge">{cartCount}</span>}
+                {cartCount === 0 && <span className="header__cart-count">{cartCount}</span>}
             </div>
 
             </header>
